@@ -7,6 +7,7 @@ const Conversation = ({ conversation, emoji, lastIdx }) => {
   const isSelected = selectedConversation?._id === conversation._id
   const { onlineUsers } = useSocketContext()
   const isOnline = onlineUsers.includes(conversation._id)
+
   return (
     <>
       <div
@@ -19,12 +20,9 @@ const Conversation = ({ conversation, emoji, lastIdx }) => {
             <img src={conversation.profilePic} alt="user avatar" />
           </div>
         </div>
-        <div className="flex flex-col flex-1">
-          <div className="flex gap-3 justify-between">
-            <p className="font-bold text-gray-200">{conversation.fullName}</p>
-            <p>@{conversation.username}</p>
-            <span className="text-xl">{emoji}</span>
-          </div>
+        <div className="flex flex-col">
+          <p className="font-bold text-gray-200">{conversation.fullName}</p>
+          <p className="text-gray-400">@{conversation.username}</p>
         </div>
       </div>
       {!lastIdx && <div className="divider my-0 py-0 h-1"></div>}

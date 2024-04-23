@@ -39,14 +39,23 @@ const useSignup = () => {
       })
       const data = await res.json()
       if (data.error) {
-        throw new error(data.error)
+        if (data.error === "Username already exists") {
+          toast.error("Username already exists. Please choose another one.")
+        } else if (
+          data.error === "Username must be between 4 and 15 characters"
+        ) {
+          toast.error("Username must be between 4 and 15 characters")
+        } else if (data.error === "Username cannot contain spaces") {
+          toast.error("Username cannot contain spaces")
+        } else {
+          throw new Error(data.error)
+        }
+      } else {
+        // Save to local storage
+        localStorage.setItem("flingchat-user", JSON.stringify(data))
+        // Update context
+        setAuthUser(data)
       }
-      //save to local storage
-      localStorage.setItem("flingchat-user", JSON.stringify(data))
-      //context
-      setAuthUser(data)
-
-      console.log(data)
     } catch (error) {
       toast.error(error.message)
     } finally {
@@ -55,6 +64,7 @@ const useSignup = () => {
   }
   return { loading, signup }
 }
+
 export default useSignup
 
 function handleInputErrors({

@@ -6,17 +6,28 @@ export const signup = async (req, res) => {
   try {
     const { fullName, username, password, confirmPassword, gender } = req.body
 
+    // Check if username contains spaces
+    if (username.includes(" ")) {
+      return res.status(400).json({ error: "Username cannot contain spaces" })
+    }
+
     if (password !== confirmPassword) {
       return res.status(400).json({})
     }
 
     const user = await User.findOne({ username })
+    const toShort = username.length < 4 || username.length > 15
 
     if (user) {
       return res.status(400).json({ error: "Username already exists" })
     }
+    if (toShort) {
+      return res
+        .status(400)
+        .json({ error: "Username must be between 4 and 15 characters" })
+    }
 
-    //HASH PASSWORD
+    // HASH PASSWORD
     const salt = await bcryptjs.genSalt(10)
     const hashedPassword = await bcryptjs.hash(password, salt)
 
@@ -32,7 +43,7 @@ export const signup = async (req, res) => {
     })
 
     if (newUser) {
-      //generate JWT token here
+      // Generate JWT token here
       generateTokenAndSaveCookie(newUser._id, res)
       await newUser.save()
 
