@@ -22,7 +22,7 @@ const Message = ({ message }) => {
         </div>
       </div>
       <div
-        className={`chat-bubble text-white ${chatBgColor} ${isShaking} pb-2`}
+        className={`chat-bubble text-white ${chatBgColor} ${isShaking} pb-2 break-words`}
       >
         {message.message}
       </div>
