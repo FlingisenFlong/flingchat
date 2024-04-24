@@ -25,6 +25,7 @@ io.on("connection", (socket) => {
   
 
   const userId = socket.handshake.query.userId
+  const selectedConversation = socket.handshake.selectedCon
   if (userId != "undefined") {
     userSocketMap[userId] = socket.id
   }
