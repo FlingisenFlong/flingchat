@@ -15,8 +15,8 @@ const Messages = () => {
 	const { selectedConversation } = useConversation()
 
 	const messagesForThisConversation = messages.filter(x => {
-		if (x.receiverId === authUser.id && x.senderId === selectedConversation) return true
-		if (x.senderId === authUser.id  && x.receiverId === selectedConversation) return true
+		if (x.receiverId == authUser.id && x.senderId == selectedConversation) return true
+		if (x.senderId == authUser.id  && x.receiverId == selectedConversation) return true
 
 		return false
 	})
