@@ -4,7 +4,7 @@ import MessageSkeleton from "../skeletons/MessageSkeleton";
 import Message from "./Message";
 import useListenMessages from "../../hooks/useListenMessages";
 import useAuthContext from '../../context/AuthContext.jsx'
-import useConversation from "../../zustand/useConversation"
+import useConversation from "../../zustand/useConversation.jsx"
 
 const Messages = () => {
 	const { messages, loading } = useGetMessages();
