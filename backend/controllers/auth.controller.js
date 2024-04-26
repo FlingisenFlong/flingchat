@@ -17,6 +17,8 @@ export const signup = async (req, res) => {
 
     const user = await User.findOne({ username })
     const toShort = username.length < 4 || username.length > 15
+    const toLong = fullName.length > 20
+    const space = fullName == " "
 
     if (user) {
       return res.status(400).json({ error: "Username already exists" })
@@ -25,6 +27,14 @@ export const signup = async (req, res) => {
       return res
         .status(400)
         .json({ error: "Username must be between 4 and 15 characters" })
+    }
+    if (toLong) {
+      return res
+        .status(400)
+        .json({ error: "Full name must be less than 20 characters" })
+    }
+    if (space) {
+      return res.status(400).json({ error: "Full name cannot be a space" })
     }
 
     // HASH PASSWORD

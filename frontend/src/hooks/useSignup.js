@@ -47,6 +47,10 @@ const useSignup = () => {
           toast.error("Username must be between 4 and 15 characters")
         } else if (data.error === "Username cannot contain spaces") {
           toast.error("Username cannot contain spaces")
+        } else if (data.error === "Full name cannot be a space") {
+          toast.error("display cannot be a space")
+        } else if (data.error === "Full name must be less than 20 characters") {
+          toast.error("display must be less than 20 characters")
         } else {
           throw new Error(data.error)
         }
