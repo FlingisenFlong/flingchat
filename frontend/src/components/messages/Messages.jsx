@@ -11,7 +11,6 @@ const Messages = () => {
   const lastMessageRef = useRef()
   const { selectedConversation } = useConversation()
 
-  console.log(selectedConversation)
   useEffect(() => {
     setTimeout(() => {
       lastMessageRef.current?.scrollIntoView({ behavior: "smooth" })
