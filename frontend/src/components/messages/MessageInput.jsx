@@ -19,7 +19,11 @@ const MessageInput = () => {
           className="border text-sm rounded-lg block w-full p-2.5  bg-gray-700 border-gray-600 text-white"
           placeholder="Send a message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            if (e.target.value.length <= 1000) {
+              setMessage(e.target.value)
+            }
+          }}
         />
         <button
           type="submit"
