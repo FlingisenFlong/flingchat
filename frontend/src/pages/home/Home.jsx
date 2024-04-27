@@ -1,5 +1,4 @@
 import MessageContainer from "../../components/messages/MessageContainer"
-import ProfileWrapper from "../../components/profile/profileWrapper"
 import Sidebar from "../../components/sidebar/Sidebar"
 
 const Home = () => {
