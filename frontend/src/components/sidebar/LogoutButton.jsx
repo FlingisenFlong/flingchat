@@ -14,9 +14,6 @@ const LogoutButton = () => {
       ) : (
         <span className="loading loading-spinner"></span>
       )}
-      <a href="https://github.com/FlingisenFlong/flingchat" target="_blank">
-        <img src={githubLogo} className="w-6 h-6 ml-2" alt="" />
-      </a>
     </div>
   )
 }
