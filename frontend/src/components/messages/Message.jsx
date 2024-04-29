@@ -1,6 +1,6 @@
 import { extractTime } from "../../utils/extractTime"
 import useConversation from "../../zustand/useConversation"
-import {useAuthContext} from "../../context/AuthContext"
+import { useAuthContext } from "../../context/AuthContext"
 
 const Message = ({ message }) => {
   const { authUser } = useAuthContext()
@@ -11,7 +11,7 @@ const Message = ({ message }) => {
   const profilePic = fromMe
     ? authUser.profilePic
     : selectedConversation?.profilePic
-  const chatBgColor = fromMe ? "bg-green-700" : ""
+  const chatBgColor = fromMe ? "bg-green-800" : ""
   const isShaking = message.shouldShake ? "shake" : ""
 
   return (
