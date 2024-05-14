@@ -5,6 +5,7 @@ import useConversation from "../zustand/useConversation"
 
 import notificationSound from "../assets/sounds/notification.mp3"
 import { useAuthContext } from "../context/AuthContext"
+import toast from "react-hot-toast"
 
 const useListenMessages = () => {
   const { socket } = useSocketContext()
@@ -17,8 +18,14 @@ const useListenMessages = () => {
       newMessage.shouldShake = true
       const sound = new Audio(notificationSound)
       sound.play()
+
       if (selectedConversation?._id === newMessage.senderId) {
         setMessages([...messages, newMessage])
+      } else {
+        toast("new message", {
+          icon: "💬",
+          position: "bottom-right",
+        })
       }
     })
 

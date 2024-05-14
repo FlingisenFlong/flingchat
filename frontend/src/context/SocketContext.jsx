@@ -15,7 +15,7 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("https://chat.glowberry.xyz", {
+      const socket = io("localhost:5000", {
         query: {
           userId: authUser._id,
         },
