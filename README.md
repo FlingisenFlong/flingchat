@@ -1,6 +1,6 @@
 # Flingchat
 
-https://chat.glowberry.xyz
+there is no public hosting of this service right now
 
 # Flingchat Self-Hosting Guide
 
